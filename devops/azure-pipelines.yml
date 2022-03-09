@@ -1,0 +1,16 @@
+trigger:
+  branches:
+    include:
+      - master
+jobs:
+  - job: Build
+    pool:
+      vmImage: 'ubuntu-latest'
+    workspace:
+      clean: all
+    variables:
+    - name: DECODE_PERCENTS
+      value: true
+    steps:
+      - checkout: self
+      
