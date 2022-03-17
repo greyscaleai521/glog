@@ -9,7 +9,7 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     steps:
-      - uses: greyscaleai521/fork-sync
+      - uses: greyscaleai521/fork-sync@master
         with:
           owner: google
           base: master
