@@ -11,9 +11,9 @@ jobs:
     steps:
       - uses: tgymnich/fork-sync@v1.4
         with:
-          token: ${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}
           owner: google
           base: master
           head: master
           merge_method: merge
           pr_title: Merge commit from upstream google/glog
+          # token: ${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}          
