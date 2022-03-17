@@ -1,0 +1,18 @@
+ - name: Merge Upstream
+        uses: exions/merge-upstream@v1
+        with:
+          upstream: ${{ github.event.inputs.upstream }}
+          upstream-branch: ${{ github.event.inputs.upstream-branch }}
+          branch: ${{ github.event.inputs.branch }}
+          token: ${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}
+
+
+                # - uses: greyscaleai521/fork-sync@master
+                #   with:
+                #     owner: google
+                #     base: master
+                #     head: master
+                #     merge_method: merge
+                #     pr_title: Merge commit from upstream google/glog
+                #     approver_token: ${{ secrets.GITHUB_TOKEN }}auto_approve
+                #     token: ${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}
