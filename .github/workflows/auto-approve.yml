@@ -10,4 +10,4 @@ jobs:
     steps:
     - uses: hmarr/auto-approve-action@v2
       with:
-        github-token: "${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}"
+        github-token: "${{ secrets.GITHUB_TOKEN }}"
