@@ -1,18 +1,26 @@
-name: Merge Upstream
+name: Scheduled Merge Remote Action
 on:
   schedule:
-    - cron: '0 0 * * *' # every 30 minutes
-  workflow_dispatch: # on button click
+    - cron: '0 0 * * *'
+    # scheduled for 00:00 every Monday
+
 jobs:
-  sync:
+  merge-upstream:
     runs-on: ubuntu-latest
     steps:
-      - uses: exions/merge-upstream@v1
+      - name: Checkout
+        uses: actions/checkout@v2
         with:
-          upstream: ${{ github.event.inputs.upstream }}
-          upstream-branch: ${{ github.event.inputs.upstream-branch }}
-          branch: ${{ github.event.inputs.branch }}
+          ref: upstream             # set the branch to merge to
+          fetch-depth: 0
+      - name: Merge Upstream
+        uses: exions/merge-upstream@v1
+        with:
+          upstream: google/glog      # set the upstream repo
+          upstream-branch: master   # set the upstream branch to merge from
+          branch: master          # set the branch to merge to
           token: ${{ secrets.DEVOPS_SYNC_UPSTREAM_PAT }}
+
 
 
                 # - uses: greyscaleai521/fork-sync@master
