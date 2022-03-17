@@ -1,5 +1,13 @@
- - name: Merge Upstream
-        uses: exions/merge-upstream@v1
+name: Merge Upstream
+on:
+  schedule:
+    - cron: '0 0 * * *' # every 30 minutes
+  workflow_dispatch: # on button click
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: exions/merge-upstream@v1
         with:
           upstream: ${{ github.event.inputs.upstream }}
           upstream-branch: ${{ github.event.inputs.upstream-branch }}
